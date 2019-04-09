@@ -1,0 +1,91 @@
+﻿@model IEnumerable<RecursosFinal.Models.empleado>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Inicio</h2>
+
+@using (@Html.BeginForm("Index", "EMPLEADOes", FormMethod.Get))
+{
+    <b>Reporte:</b>
+    @Html.RadioButton("searchBy", "Name", true) <text>Ingre-Mes</text>
+    @Html.RadioButton("searchBy", "Gender") <text>Activo/Inactivo</text>
+
+    @Html.TextBox("search") <input type="submit" value="Buscar" class="btn btn-danger" />
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id_empleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.teléfono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_ingreso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.salario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cargo.cargo1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.departamento.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_empleado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.teléfono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_ingreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.salario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.estatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cargo.cargo1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.departamento.nombre)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.codigo_empleado }) |
+                @Html.ActionLink("Details", "Details", new { id = item.codigo_empleado }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.codigo_empleado })
+            </td>
+        </tr>
+    }
+
+</table>
